@@ -63,6 +63,15 @@ npm start
 Die React-App läuft unter:
 http://localhost:3000
 
+## Development Hinweis
+
+Für Entwicklungs- und Testzwecke wird beim Start der Anwendung automatisch ein Admin-Benutzer erzeugt,
+sofern dieser noch nicht existiert.
+
+**Admin Login (DEV):**
+- E-Mail: admin@example.com
+- Passwort: admin123
+
 Hauptfunktionen
 •	Benutzer:
 •	Registrierung & Login (JWT-basiert)
