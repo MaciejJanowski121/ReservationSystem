@@ -1,0 +1,162 @@
+/**
+ * ============================================================================
+ *  Stylesheet: Neue Reservierung
+ *  ----------------------------------------------------------------------------
+ *  Gestaltung der Seite für das Erstellen neuer Reservierungen.
+ *  Optisch und strukturell konsistent mit „Meine Reservierungen“,
+ *  „Passwort ändern“ und dem allgemeinen Karten-Layout.
+ *
+ *  Abschnitte:
+ *    • Layout (.newreservation-page) – Seitenstruktur und Zentrierung
+ *    • Karte (.newreservation-container) – Formularcontainer (Glassmorphism)
+ *    • Header (.newreservation-header) – Titel und Zurück-Button
+ *    • Formular (.reservation-form) – Eingabefelder und Dropdowns
+ *    • Button (.reservation-form button) – primäre Aktion „Reservieren“
+ *    • Responsivität – Anpassung für kleinere Bildschirme
+ *    • iOS-Fix – Lesbarkeit der Formularfelder
+ *
+ *  Designmerkmale:
+ *    - Goldene Akzente (#b58500 / #8a6500)
+ *    - Weiche Schatten, runde Ecken, visuelle Einheitlichkeit
+ *    - Klare Typografie und vereinheitlichte Eingabeelemente
+ * ============================================================================
+ */
+
+
+/* Seitenlayout (zentrierter Inhalt) */
+.newreservation-page {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+/* Kartencontainer (Formularbox) */
+.newreservation-container {
+    width: min(500px, 66%);
+    background: rgba(255,250,245,0.88);
+    border: 1px solid rgba(181,133,0,0.25);
+    border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    backdrop-filter: blur(8px) saturate(1.05);
+    padding: 40px 30px 40px 80px;
+    color: #374151;
+}
+
+/* Zeit-Inputs (Stunde/Minute nebeneinander) */
+.newreservation-container .reservation-form .time-row {
+    display: flex;
+    gap: 8px;
+}
+
+/* Kleinere Felder für Stunden und Minuten */
+.newreservation-container .reservation-form #hour,
+.newreservation-container .reservation-form #minute {
+    width: 41%;
+}
+
+/* Header (Titel & Zurück-Button) */
+.newreservation-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.newreservation-header h1 {
+    margin: 0;
+    color: #1e293b;
+    font-size: clamp(1.4rem, 1.1vw + 1rem, 1.8rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+}
+
+/* Zurück-Button (oben links) */
+.newreservation-header .back-button {
+    position: absolute;
+    left: 0;
+    height: 34px;
+    padding: 0 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(181,133,0,0.25);
+    background: #ffffff;
+    color: #1e293b;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s, border-color .2s, transform .08s;
+}
+.newreservation-header .back-button:hover {
+    background: #fffaf0;
+    border-color: rgba(181,133,0,0.30);
+}
+.newreservation-header .back-button:active {
+    transform: translateY(1px);
+}
+
+/* Formular (Eingabefelder & Dropdowns) */
+.newreservation-container .reservation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 40px;
+}
+
+/* Eingabeelemente (Input & Select) */
+.newreservation-container .reservation-form input,
+.newreservation-container .reservation-form select {
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.08);
+    background: #fff;
+    color: #1e293b;
+    font-size: 15px;
+    outline: none;
+    width: 80%;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+/* Dropdown (z. B. „Wähle einen Tisch…“) */
+.newreservation-container .reservation-form select {
+    width: 84%;
+}
+
+/* Fokus-Effekt */
+.newreservation-container .reservation-form input:focus,
+.newreservation-container .reservation-form select:focus {
+    border-color: rgba(181,133,0,0.30);
+    box-shadow: 0 0 0 3px rgba(181,133,0,0.25);
+}
+
+/* Absende-Button (Reservieren) */
+.newreservation-container .reservation-form button {
+    height: 42px;
+    border-radius: 10px;
+    border: 1px solid rgba(181,133,0,0.25);
+    background: linear-gradient(180deg, #b58500, #8a6500);
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: .02em;
+    cursor: pointer;
+    width: 85%;
+    transition: filter .2s, transform .08s;
+}
+.newreservation-container .reservation-form button:hover {
+    filter: brightness(1.05);
+}
+.newreservation-container .reservation-form button:active {
+    transform: translateY(1px);
+}
+
+/* Mobile Anpassung */
+@media (max-width: 768px) {
+    .newreservation-container { padding: 18px; }
+    .newreservation-header h1 { font-size: 1.4rem; }
+}
+
+/* iOS-Optimierung (verhindert Schriftvergrößerung) */
+input, select, textarea, button {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
